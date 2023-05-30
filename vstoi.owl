@@ -326,6 +326,12 @@ vstoi:hasZ rdf:type owl:DatatypeProperty ;
            owl:deprecated "" .
 
 
+###  http://hadatac.org/ont/vstoi#isPermanent
+vstoi:isPermanent rdf:type owl:DatatypeProperty ;
+                  rdfs:domain vstoi:Attachment ;
+                  rdfs:range xsd:boolean .
+
+
 ###  http://hadatac.org/ont/vstoi#maxDetachableDetectors
 vstoi:maxDetachableDetectors rdf:type owl:DatatypeProperty ;
                              rdfs:domain vstoi:Instrument ;
