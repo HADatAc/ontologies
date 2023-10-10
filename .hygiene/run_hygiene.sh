@@ -27,7 +27,7 @@ docker cp hygiene:"/output/$ONTPUB_FAMILY" "$OUTPUT_DIR"
 
 ls -l "$OUTPUT_DIR/ontologies/ontology/main/latest"
 
-cat "$OUTPUT_DIR/ontologies/ontology/main/latest/hygiene_test.20231010135517.dev.log"
+cat "$OUTPUT_DIR/ontologies/ontology/main/latest/hygiene_test.dev.xml"
 
 docker-compose down
 
