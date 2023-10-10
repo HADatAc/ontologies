@@ -25,6 +25,8 @@ docker exec hygiene /publisher/publish.sh hygiene
 # Copy results to the local output dir
 docker cp hygiene:"/output/$ONTPUB_FAMILY" "$OUTPUT_DIR"
 
+ls -l "$OUTPUT_DIR"
+
 docker-compose down
 
 npx verify-junit-xml "$OUTPUT_DIR/$ONTPUB_FAMILY/ontology/"*"/latest/hygiene_test.dev.xml"
