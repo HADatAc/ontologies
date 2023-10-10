@@ -27,6 +27,8 @@ docker cp hygiene:"/output/$ONTPUB_FAMILY" "$OUTPUT_DIR"
 
 ls -l "$OUTPUT_DIR/ontologies/ontology/main/latest"
 
+cat "$OUTPUT_DIR/ontologies/ontology/main/latest/hygiene_test.20231010135517.dev.log"
+
 docker-compose down
 
 npx verify-junit-xml "$OUTPUT_DIR/$ONTPUB_FAMILY/ontology/"*"/latest/hygiene_test.dev.xml"
