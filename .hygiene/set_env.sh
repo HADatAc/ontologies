@@ -22,7 +22,7 @@ HYGIENE_TEST_SUBDIR=".hygiene/tests"
 HYGIENE_FAIL_ON_WARNINGS=false
 
 # Relative path to ontology sources
-ONTPUB_SUBDIR=
+ONTPUB_SUBDIR=ontology
 # If set, ontology files with paths that partially match this var will be excluded from checking
 ONTPUB_EXCLUDED=
 
