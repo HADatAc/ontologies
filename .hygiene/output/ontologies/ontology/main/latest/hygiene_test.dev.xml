@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="10" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="ontology_hygiene_tests" skipped="0" tests="10" time="0">
+		<testcase name="Subproperties domains should not cross"/>
+		<testcase name="Every Class and Property defined in FIBO must have a rdfs:label and skos:definition"/>
+		<testcase name="Every Ontology defined in FIBO must have a rdfs:label,  sm:copyright, dct:license, dct:abstract"/>
+		<testcase name="Subproperties ranges should not cross"/>
+		<testcase name="rdfs:comment shouldn't be used for FIBO annotation."/>
+		<testcase name="Labels should be unique across FIBO."/>
+		<testcase name="Text should not use special characters"/>
+		<testcase name="If we refer to something, it should have a type"/>
+		<testcase name="Definitions shouldn't be circular."/>
+		<testcase name="We should not make explicit references to owl:Thing"/>
+	</testsuite>
+</testsuites>

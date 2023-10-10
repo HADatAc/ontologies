@@ -1,0 +1,2569 @@
+@prefix :      <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> .
+@prefix hasco: <http://hadatac.org/chear/hasco/> .
+@prefix vstoi: <http://hadatac.org/ont/vstoi#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix protege: <http://protege.stanford.edu/plugins/owl/protege#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix food:  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#> .
+@prefix daml:  <http://www.daml.org/2001/03/daml+oil#> .
+@prefix xsp:   <http://www.owl-ontologies.com/2005/08/07/xsp.owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix vin:   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+vin:CorbansPrivateBinSauvignonBlanc
+        a              vin:SauvignonBlanc ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:Corbans ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+vin:SevreEtMaineMuscadet
+        a             vin:Muscadet ;
+        vin:hasMaker  vin:SevreEtMaine .
+
+vin:WineFlavor  a        owl:Class ;
+        rdfs:subClassOf  vin:WineTaste ;
+        owl:oneOf        ( vin:Delicate vin:Moderate vin:Strong ) .
+
+vstoi:MichelsonInterferometer
+        a                owl:Class ;
+        rdfs:label       "Michelson Interferometer" ;
+        rdfs:subClassOf  vstoi:Interferometer .
+
+vin:EdnaValleyRegion  a  vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vin:ChateauChevalBlancStEmilion
+        a             vin:StEmilion ;
+        vin:hasMaker  vin:ChateauChevalBlanc .
+
+vin:Handley  a  vin:Winery .
+
+vstoi:Radar  a           owl:Class ;
+        rdfs:label       "Radar" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:DifferentialAbsorptionLidar
+        a                owl:Class ;
+        rdfs:label       "Differential Absorption Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vstoi:isFromInstrumentOperatingMode
+        a               owl:ObjectProperty ;
+        rdfs:domain     vstoi:Dataset ;
+        rdfs:range      vstoi:InstrumentOperatingMode ;
+        owl:deprecated  "" .
+
+vstoi:maxOperatingTemperature
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:range   xsd:float .
+
+vstoi:RayleighLidar  a   owl:Class ;
+        rdfs:label       "Rayleigh Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:hasVintageYear  a  owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:domain  vin:Vintage ;
+        rdfs:range   vin:VintageYear .
+
+vstoi:GroundBasedRadar
+        a                owl:Class ;
+        rdfs:label       "Ground Based Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vin:SchlossVolrad  a  vin:Winery .
+
+vin:MendocinoRegion  a      vin:Region ;
+        vin:adjacentRegion  vin:SonomaRegion ;
+        vin:locatedIn       vin:CaliforniaRegion .
+
+vin:Delicate  a  owl:Thing , vin:WineFlavor .
+
+vin:CheninBlanc  a          owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Dry vin:OffDry )
+                                                 ] ;
+                              owl:onProperty     vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:White ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Moderate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Full vin:Medium )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:CheninBlancGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:WhiteWine  a            owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:White ;
+                                owl:onProperty  vin:hasColor
+                              ]
+                            ) .
+
+vin:SemillonOrSauvignonBlanc
+        a                   owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Medium vin:Full )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:White ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a                  owl:Restriction ;
+                                owl:allValuesFrom  [ a          owl:Class ;
+                                                     owl:oneOf  ( vin:SemillonGrape vin:SauvignonBlancGrape )
+                                                   ] ;
+                                owl:onProperty     vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:Polarimeter  a     owl:Class ;
+        rdfs:label       "Polarimeter" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vin:CabernetFranc  a        owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Moderate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Medium ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:CabernetFrancGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:MeteorWindRadar
+        a                owl:Class ;
+        rdfs:label       "Meteor Wind Radar" ;
+        rdfs:subClassOf  vstoi:MiddleAtmosphereRadar .
+
+vstoi:FabryPerot  a      owl:Class ;
+        rdfs:comment     "A multiple-beam interferometer, usually consisting of two flat plates, with high reflective ability. The plates are set parallel to one another by spacers so that light waves may bounce back and forth between them several times. The requirements for constructive interference of reflected light waves of a given wavelength can be fulfilled only at particular angles, relative to the normal to the plates. Therefore, Fabry-Perot interferometers can be used as spectrometers with high resolution. Used as a laser resonator, the Fabry-Perot reinforces only light of specific frequencies traveling perpendicular to the mirror surfaces, and its successive reflections and amplifications form the oscillating mode." ;
+        rdfs:label       "Febry Perot Interferometer" ;
+        rdfs:subClassOf  vstoi:Interferometer .
+
+vin:MedocRegion  a     vin:Region ;
+        vin:locatedIn  vin:BordeauxRegion .
+
+vin:MariettaPetiteSyrah
+        a              vin:PetiteSyrah ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Marietta ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .
+
+vin:CabernetSauvignonGrape
+        a       owl:Thing , vin:WineGrape .
+
+vin:PinotBlanc  a           owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:White ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:PinotBlancGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:Merlot  a               owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Moderate vin:Delicate )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Light vin:Medium )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:MerlotGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:hasSIRMaintainerEmail
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SIRElement ;
+        rdfs:range   xsd:string .
+
+vin:McGuinnesso  a  vin:Winery .
+
+vstoi:PotassiumLidar  a  owl:Class ;
+        rdfs:label       "Potassium Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vstoi:SecondaryIonMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Secondary Ion Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vstoi:EarthAtmosphere
+        a              owl:NamedIndividual ;
+        vstoi:hasName  "Earth Atmosphere" .
+
+vin:Ventana  a  vin:Winery .
+
+vstoi:hasZ  a           owl:DatatypeProperty ;
+        rdfs:domain     vstoi:Platform ;
+        rdfs:range      xsd:float ;
+        owl:deprecated  "" .
+
+vin:NapaRegion  a      vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vin:RieslingGrape  a  vin:WineGrape .
+
+vin:BordeauxRegion  a  vin:Region ;
+        vin:locatedIn  vin:FrenchRegion .
+
+vin:DryRedWine  a           owl:Class ;
+        owl:intersectionOf  ( vin:DryWine vin:RedWine ) .
+
+vstoi:StrontiumLidar  a  owl:Class ;
+        rdfs:label       "Strontium Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:ChateauDYchemSauterne
+        a                  vin:Sauternes ;
+        vin:hasFlavor      vin:Strong ;
+        vin:hasMaker       vin:ChateauDYchem ;
+        vin:madeFromGrape  vin:SauvignonBlancGrape , vin:SemillonGrape .
+
+vstoi:DopplerRadar  a    owl:Class ;
+        rdfs:label       "Doppler Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vstoi:StationaryDeployment
+        a                owl:Class ;
+        rdfs:comment     "A deployment of a platform that does not move, it remains in one place with a given latitude, longitude, and altitude." ;
+        rdfs:label       "Stationary Deployment" ;
+        rdfs:subClassOf  vstoi:Deployment .
+
+vin:RedTableWine  a         owl:Class ;
+        owl:intersectionOf  ( vin:TableWine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Red ;
+                                owl:onProperty  vin:hasColor
+                              ]
+                            ) .
+
+vstoi:isPermanent  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Attachment ;
+        rdfs:range   xsd:boolean .
+
+vstoi:AerosolLidar  a    owl:Class ;
+        rdfs:label       "Aerosol Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:RoseWine  a             owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Rose ;
+                                owl:onProperty  vin:hasColor
+                              ]
+                            ) .
+
+vstoi:Earth  a         owl:NamedIndividual ;
+        vstoi:hasName  "Earth" .
+
+vin:WhitehallLane  a  vin:Winery .
+
+vin:CorbansDryWhiteRiesling
+        a              vin:Riesling ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Corbans ;
+        vin:hasSugar   vin:OffDry ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+vin:MariettaZinfandel
+        a              vin:Zinfandel ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Marietta ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .
+
+vin:RoseDAnjou  a     vin:Anjou ;
+        vin:hasMaker  vin:DAnjou .
+
+vin:Selaks  a   vin:Winery .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( vin:Bancroft vin:ChateauChevalBlanc vin:ChateauDYchem vin:ChateauDeMeursault vin:ChateauLafiteRothschild vin:ChateauMargauxWinery vin:ChateauMorgon vin:ClosDeLaPoussie vin:ClosDeVougeot vin:CongressSprings vin:Corbans vin:CortonMontrachet vin:Cotturi vin:DAnjou vin:Elyse vin:Forman vin:Foxen vin:GaryFarrell vin:KalinCellars vin:KathrynKennedy vin:LaneTanner vin:Longridge vin:Marietta vin:McGuinnesso vin:MountEdenVineyard vin:Mountadam vin:PageMillWinery vin:PeterMccoy vin:PulignyMontrachet vin:SantaCruzMountainVineyard vin:SaucelitoCanyon vin:SchlossRothermel vin:SchlossVolrad vin:SeanThackrey vin:Selaks vin:SevreEtMaine vin:StGenevieve vin:Stonleigh vin:Taylor vin:Ventana vin:WhitehallLane )
+] .
+
+vin:ClosDeLaPoussieSancerre
+        a             vin:Sancerre ;
+        vin:hasMaker  vin:ClosDeLaPoussie .
+
+vin:Forman  a   vin:Winery .
+
+vstoi:PositiveOneElectricCharge
+        a             owl:NamedIndividual ;
+        rdfs:comment  "Electric Charge = +1" .
+
+vstoi:hasInformant  a  owl:ObjectProperty ;
+        rdfs:domain  vstoi:Questionnaire ;
+        rdfs:range   vstoi:Informant .
+
+vin:Wine  a              owl:Class ;
+        rdfs:label       "vin"@fr , "wine"@en ;
+        rdfs:subClassOf  food:PotableLiquid ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vin:hasFlavor
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vin:hasMaker
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vin:hasBody
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:onProperty      vin:locatedIn ;
+                           owl:someValuesFrom  vin:Region
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vin:hasSugar
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty      vin:madeFromGrape
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  vin:Winery ;
+                           owl:onProperty     vin:hasMaker
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vin:hasColor
+                         ] .
+
+vstoi:hasDimensions  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Detector ;
+        rdfs:range   xsd:string .
+
+vstoi:HFRadar  a         owl:Class ;
+        rdfs:label       "HF Radar" ;
+        rdfs:subClassOf  vstoi:CoherentIonosphericRadar .
+
+vin:BourgogneRegion  a  vin:Region ;
+        vin:locatedIn  vin:FrenchRegion .
+
+vin:ChiantiRegion  a   vin:Region ;
+        vin:locatedIn  vin:ItalianRegion .
+
+vin:TexasWine  a            owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:TexasRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vstoi:VHFRadar  a        owl:Class ;
+        rdfs:label       "VHF Radar" ;
+        rdfs:subClassOf  vstoi:CoherentIonosphericRadar .
+
+vin:ChateauDeMeursaultMeursault
+        a              vin:Meursault ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:ChateauDeMeursault .
+
+vin:Stonleigh  a  vin:Winery .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( vin:Sweet vin:OffDry vin:Dry )
+] .
+
+vin:ChateauDeMeursault
+        a       vin:Winery .
+
+vstoi:Dataset  a          owl:Class ;
+        rdfs:comment      "A collection of observations of the physical quantity of interest.  They usually have a location, observatory, instrument, and parameter (or set of parameters) associated with them.  They also have a format along with an epoch over which they were taken." ;
+        rdfs:label        "Dataset" ;
+        owl:disjointWith  vstoi:Observatory .
+
+vstoi:Platform  a     owl:Class ;
+        rdfs:comment  "A surface onto which instruments are deployed to collect data" ;
+        rdfs:label    "Platform" .
+
+vin:AustralianRegion  a  vin:Region .
+
+vin:Full  a     owl:Thing , vin:WineBody .
+
+vin:StGenevieveTexasWhite
+        a              vin:WhiteWine ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:StGenevieve ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:CentralTexasRegion .
+
+vstoi:IronLidar  a       owl:Class ;
+        rdfs:label       "Iron Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:hasFlavor  a            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:range          vin:WineFlavor ;
+        rdfs:subPropertyOf  vin:hasWineDescriptor .
+
+vstoi:AllSkyImager  a    owl:Class ;
+        rdfs:label       "All Sky Imager" ;
+        rdfs:subClassOf  vstoi:Imager .
+
+vin:Pauillac  a             owl:Class ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Strong ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Full ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:CabernetSauvignonGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Medoc
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:PauillacRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vstoi:hasVersion  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SIRElement ;
+        rdfs:range   xsd:string .
+
+vin:WineTaste  a         owl:Class ;
+        rdfs:subClassOf  vin:WineDescriptor .
+
+vin:SaucelitoCanyonZinfandel
+        a              vin:Zinfandel ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:SaucelitoCanyon ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:ArroyoGrandeRegion .
+
+vstoi:FourierTransformIonCyclotronMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Fourier Transform Ion Cyclotron Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:IonCyclotronMassSpectrometer .
+
+vin:ClosDeLaPoussie  a  vin:Winery .
+
+vstoi:AcceleratorMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Accelerator Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:FormanChardonnay  a  vin:Chardonnay ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Forman ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vin:ChateauMorgon  a  vin:Winery .
+
+vstoi:Thermometer  a     owl:Class ;
+        rdfs:comment     "A device that measures temperature" ;
+        rdfs:label       "Thermometer" ;
+        rdfs:subClassOf  vstoi:Detector .
+
+vin:CotesDOr  a             owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Moderate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        owl:intersectionOf  ( vin:RedBurgundy
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:CotesDOrRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vstoi:KnudsenEffusionMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Knudsen Effusion Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:ToursRegion  a     vin:Region ;
+        vin:locatedIn  vin:LoireRegion .
+
+vstoi:hasOutputResolution
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SensingPerspective ;
+        rdfs:range   xsd:float .
+
+vin:WhitehallLaneCabernetFranc
+        a              vin:CabernetFranc ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:WhitehallLane ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vstoi:hasCodebook  a  owl:ObjectProperty ;
+        rdfs:domain  vstoi:Detector ;
+        rdfs:range   vstoi:Codebook .
+
+vin:SchlossRothermelTrochenbierenausleseRiesling
+        a              vin:SweetRiesling ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:SchlossRothermel ;
+        vin:hasSugar   vin:Sweet ;
+        vin:locatedIn  vin:GermanyRegion .
+
+vin:FormanCabernetSauvignon
+        a              vin:CabernetSauvignon ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:Forman ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vin:SantaCruzMountainVineyardCabernetSauvignon
+        a              vin:CabernetSauvignon ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:SantaCruzMountainVineyard ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SantaCruzMountainsRegion .
+
+vstoi:fromDeployment  a  owl:ObjectProperty ;
+        rdfs:domain  vstoi:Dataset ;
+        rdfs:range   vstoi:Deployment .
+
+vin:producesWine  a    owl:ObjectProperty ;
+        owl:inverseOf  vin:hasMaker .
+
+vstoi:belongsTo  a   owl:ObjectProperty ;
+        rdfs:domain  vstoi:Attachment ;
+        rdfs:range   vstoi:Instrument .
+
+vin:ItalianWine  a          owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:ItalianRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:Port  a              owl:Class ;
+        rdfs:subClassOf  vin:RedWine ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Sweet ;
+                           owl:onProperty  vin:hasSugar
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Strong ;
+                           owl:onProperty  vin:hasFlavor
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Full ;
+                           owl:onProperty  vin:hasBody
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:PortugalRegion ;
+                           owl:onProperty  vin:locatedIn
+                         ] .
+
+vstoi:EarthSouthPole  a  owl:NamedIndividual ;
+        vstoi:hasName  "South Pole" .
+
+vin:Loire  a                owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:LoireRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vstoi:SectorFieldMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Sector Field Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:ArroyoGrandeRegion
+        a              vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vstoi:hasIdentifier  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+vin:LaneTannerPinotNoir
+        a              vin:PinotNoir ;
+        vin:hasBody    vin:Light ;
+        vin:hasFlavor  vin:Delicate ;
+        vin:hasMaker   vin:LaneTanner ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SantaBarbaraRegion .
+
+vin:StGenevieve  a  vin:Winery .
+
+vstoi:GroundBasedIndices
+        a                owl:Class ;
+        rdfs:label       "Ground Based Indices" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:hasLowRangeValue
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SensingPerspective ;
+        rdfs:range   xsd:float .
+
+<http://purl.obolibrary.org/obo/SIO_000498>
+        a                owl:Class ;
+        rdfs:label       "person" ;
+        rdfs:subClassOf  <http://purl.obolibrary.org/obo/SIO_001353> .
+
+vin:Chianti  a           owl:Class ;
+        rdfs:subClassOf  vin:ItalianWine ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:ChiantiRegion ;
+                           owl:onProperty  vin:locatedIn
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:SangioveseGrape ;
+                           owl:onProperty  vin:madeFromGrape
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Dry ;
+                           owl:onProperty  vin:hasSugar
+                         ] ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  [ a          owl:Class ;
+                                                owl:oneOf  ( vin:Light vin:Medium )
+                                              ] ;
+                           owl:onProperty     vin:hasBody
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Red ;
+                           owl:onProperty  vin:hasColor
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Moderate ;
+                           owl:onProperty  vin:hasFlavor
+                         ] .
+
+vstoi:hasMaker  a       owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        owl:deprecated  "" .
+
+vstoi:maxLoggedMeasurements
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:range   xsd:double .
+
+vin:MerlotGrape  a  owl:Thing , vin:WineGrape .
+
+vin:GamayGrape  a  vin:WineGrape .
+
+<http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine>
+        a       owl:Ontology .
+
+vstoi:Instrument  a      owl:Class ;
+        rdfs:comment     "A device or mechanism that is used to achire attribute values of entities of interest.  An instrument does not necessarily require a way to store its measured quantity (e.g, a hard disk)." ;
+        rdfs:label       "Instrument" ;
+        rdfs:subClassOf  vstoi:SIRElement .
+
+vin:SancerreRegion  a  vin:Region ;
+        vin:locatedIn  vin:LoireRegion .
+
+vstoi:MFRadar  a         owl:Class ;
+        rdfs:label       "MF Radar" ;
+        rdfs:subClassOf  vstoi:MiddleAtmosphereRadar .
+
+vstoi:Detector  a        owl:Class ;
+        rdfs:comment     "A device which detects measurements, such as temperature or wind velocity" ;
+        rdfs:label       "Detector" ;
+        rdfs:subClassOf  vstoi:SIRElement .
+
+<http://purl.obolibrary.org/obo/SIO_001353>
+        a                owl:Class ;
+        rdfs:subClassOf  <http://purl.obolibrary.org/obo/SIO_000776> .
+
+vin:MuscadetRegion  a  vin:Region ;
+        vin:locatedIn  vin:LoireRegion .
+
+vin:SauvignonBlancGrape
+        a       owl:Thing , vin:WineGrape .
+
+vstoi:Film  a             owl:Class ;
+        rdfs:label        "Film" ;
+        rdfs:subClassOf   vstoi:ImagingDetector ;
+        owl:disjointWith  vstoi:Thermometer .
+
+vstoi:Spectrometer  a    owl:Class ;
+        rdfs:label       "Spectrometer" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vstoi:minOperatingTemperature
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:range   xsd:float .
+
+vin:AlsatianWine  a         owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:AlsaceRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:Gamay  a                owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:GamayGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:EarthStratosphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "From the 7â€“17 km range (upper boundary of the Troposphere) to about 50 km, temperature increasing with height." ;
+        vstoi:hasName  "Earth Stratosphere" .
+
+vin:LateHarvest  a        owl:Class ;
+        rdfs:subClassOf   vin:Wine ;
+        rdfs:subClassOf   [ a               owl:Restriction ;
+                            owl:hasValue    vin:Sweet ;
+                            owl:onProperty  vin:hasSugar
+                          ] ;
+        rdfs:subClassOf   [ a                  owl:Restriction ;
+                            owl:allValuesFrom  [ a          owl:Class ;
+                                                 owl:oneOf  ( vin:Moderate vin:Strong )
+                                               ] ;
+                            owl:onProperty     vin:hasFlavor
+                          ] ;
+        owl:disjointWith  vin:EarlyHarvest .
+
+vin:Mountadam  a  vin:Winery .
+
+vin:LaneTanner  a  vin:Winery .
+
+vstoi:hasDeploymentId
+        a            owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Deployment ;
+        rdfs:range   xsd:int .
+
+vin:Muscadet  a             owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:PinotBlancGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Delicate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Light ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:Loire
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:MuscadetRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:Elyse  a    vin:Winery .
+
+vin:locatedIn  a     owl:ObjectProperty , owl:TransitiveProperty ;
+        rdfs:domain  owl:Thing ;
+        rdfs:range   vin:Region .
+
+vstoi:SyntheticApertureRadar
+        a                owl:Class ;
+        rdfs:label       "Synthetic Aperture Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vstoi:hasLanguage  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SIRElement .
+
+vstoi:Lidar  a           owl:Class ;
+        rdfs:label       "Lidar" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vstoi:Deployment  a      owl:Class ;
+        rdfs:comment     "A platform is deployed during a certain duration of time and over a certain spacial domain. The platform has instruments on it within the scope of this deployment. For example, a boat will carry certain instruments during a deployment, and those instruments will be removed once the deployment is completed. A stationary deployment can last a much longer time, even decades, with the same instrument." ;
+        rdfs:label       "Deployment" ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vstoi:hasDeploymentId
+                         ] .
+
+vstoi:BirefringentFilter
+        a                 owl:Class ;
+        rdfs:label        "Birefringent Filter Instrument" ;
+        rdfs:subClassOf   vstoi:FilterInstrument ;
+        owl:disjointWith  vstoi:LyotFilter , vstoi:InterferenceFilter .
+
+vstoi:BiStaticRadar  a   owl:Class ;
+        rdfs:label       "Bi Static Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vstoi:InductivelyCoupledMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Inductively Coupled Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:SonomaRegion  a    vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vin:CentralCoastRegion
+        a              vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vin:ElyseZinfandel  a  vin:Zinfandel ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Elyse ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vstoi:hasPriority  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:ResponseOption , vstoi:Attachment ;
+        rdfs:range   xsd:string .
+
+vin:ChateauLafiteRothschild
+        a       vin:Winery .
+
+vin:GermanWine  a           owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:GermanyRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+<http://purl.obolibrary.org/obo/SIO_000000>
+        a       owl:Class .
+
+vin:Taylor  a   vin:Winery .
+
+vin:LoireRegion  a     vin:Region ;
+        vin:locatedIn  vin:FrenchRegion .
+
+vin:PetiteSyrahGrape  a  vin:WineGrape .
+
+vstoi:hasDeploymentName
+        a            owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Deployment ;
+        rdfs:range   xsd:string .
+
+vstoi:PhasedArrayRadar
+        a                owl:Class ;
+        rdfs:label       "Phased Array Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vstoi:MattauchHerzogSmallVolumeMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Mattauch Herzog Small Volume Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:CentralTexasRegion
+        a              vin:Region ;
+        vin:locatedIn  vin:TexasRegion .
+
+vin:Burgundy  a             owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:BourgogneRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:KathrynKennedy  a  vin:Winery .
+
+vin:CabernetFrancGrape
+        a       owl:Thing , vin:WineGrape .
+
+vin:IceWine  a              owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Moderate vin:Strong )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Medium vin:Full )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:LateHarvest vin:DessertWine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:White ;
+                                owl:onProperty  vin:hasColor
+                              ]
+                            ) .
+
+vin:LongridgeMerlot  a  vin:Merlot ;
+        vin:hasBody    vin:Light ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Longridge ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+vin:PetiteVerdotGrape
+        a       owl:Thing , vin:WineGrape .
+
+vin:Riesling  a             owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:White ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:RieslingGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:hasErrors  a  owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+vstoi:RamanLidar  a      owl:Class ;
+        rdfs:label       "Raman Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:MeursaultRegion  a  vin:Region ;
+        vin:locatedIn  vin:BourgogneRegion .
+
+vstoi:DopplerLidar  a    owl:Class ;
+        rdfs:label       "Doppler Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vstoi:hasWebDocumentation
+        a           owl:DatatypeProperty ;
+        rdfs:range  xsd:anyURI .
+
+vin:hasBody  a              owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:range          vin:WineBody ;
+        rdfs:subPropertyOf  vin:hasWineDescriptor .
+
+vstoi:OzoneLidar  a      owl:Class ;
+        rdfs:label       "Ozone Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:FullBodiedWine  a       owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Full ;
+                                owl:onProperty  vin:hasBody
+                              ]
+                            ) .
+
+vin:WhiteNonSweetWine
+        a                   owl:Class ;
+        owl:intersectionOf  ( vin:WhiteWine
+                              [ a                  owl:Restriction ;
+                                owl:allValuesFrom  [ a          owl:Class ;
+                                                     owl:oneOf  ( vin:Dry vin:OffDry )
+                                                   ] ;
+                                owl:onProperty     vin:hasSugar
+                              ]
+                            ) .
+
+vin:SchlossRothermel  a  vin:Winery .
+
+vin:WhiteLoire  a           owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:CheninBlancGrape vin:PinotBlancGrape vin:SauvignonBlancGrape )
+                                                 ] ;
+                              owl:onProperty     vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Loire vin:WhiteWine ) .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( vin:Light vin:Medium vin:Full )
+] .
+
+vstoi:EarthExosphere  a  owl:NamedIndividual ;
+        rdfs:comment   "The region of the Earth Atmosphere above the Ionosphere, where the atmosphere thins out into space. This is the last major atmosphere." ;
+        vstoi:hasName  "Earth Exosphere" .
+
+vin:DAnjou  a   vin:Winery .
+
+vin:adjacentRegion  a  owl:ObjectProperty , owl:SymmetricProperty ;
+        rdfs:domain  vin:Region ;
+        rdfs:range   vin:Region .
+
+vin:Tours  a                owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:CheninBlancGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Loire
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:ToursRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vstoi:EarthOzoneLayer
+        a              owl:NamedIndividual ;
+        rdfs:comment   "Or ozonosphere, the region of the Earth's Atmosphere approximately in the range 10 - 50 km, where stratospheric ozone is found. Note that even within this region, ozone is a minor constituent by volume." ;
+        vstoi:hasName  "Earth Ozone Layer" .
+
+vstoi:CoherentIonosphericRadar
+        a                owl:Class ;
+        rdfs:label       "Coherent Ionospheric Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vstoi:Laboratory  a      owl:Class ;
+        rdfs:comment     "A platform where instruments are deployed under controlled operation conditions" ;
+        rdfs:label       "Laboratory" ;
+        rdfs:subClassOf  vstoi:Platform .
+
+vstoi:hasResponse  a  owl:ObjectProperty .
+
+vin:White  a    vin:WineColor , owl:Thing .
+
+vin:FrenchRegion  a  vin:Region .
+
+vin:GaryFarrellMerlot
+        a              vin:Merlot ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:GaryFarrell ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .
+
+vstoi:ResponseOption  a  owl:Class ;
+        rdfs:subClassOf  vstoi:SIRElement .
+
+vstoi:Photometer  a      owl:Class ;
+        rdfs:label       "Photometer" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vin:ItalianRegion  a  vin:Region .
+
+vin:SchlossVolradTrochenbierenausleseRiesling
+        a              vin:SweetRiesling ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:SchlossVolrad ;
+        vin:hasSugar   vin:Sweet ;
+        vin:locatedIn  vin:GermanyRegion .
+
+vin:CorbansSauvignonBlanc
+        a              vin:SauvignonBlanc ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:Corbans ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+vin:MountEdenVineyard
+        a       vin:Winery .
+
+vin:BeaujolaisRegion  a  vin:Region ;
+        vin:locatedIn  vin:FrenchRegion .
+
+vin:ChateauDYchem  a  vin:Winery .
+
+vin:GaryFarrell  a  vin:Winery .
+
+vstoi:SIRElement  a      owl:Class ;
+        rdfs:subClassOf  prov:Entity .
+
+vin:USRegion  a  vin:Region .
+
+vin:Margaux  a              owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Delicate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:MerlotGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Medoc
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:MargauxRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:SevreEtMaine  a  vin:Winery .
+
+vstoi:reference  a   owl:DatatypeProperty ;
+        rdfs:domain  [ a            owl:Class ;
+                       owl:unionOf  ( vstoi:Instrument vstoi:Observatory )
+                     ] ;
+        rdfs:range   xsd:string .
+
+vstoi:hasY  a           owl:DatatypeProperty ;
+        rdfs:domain     vstoi:Platform ;
+        rdfs:range      xsd:float ;
+        owl:deprecated  "" .
+
+vstoi:UHFRadar  a        owl:Class ;
+        rdfs:label       "UHF Radar" ;
+        rdfs:subClassOf  vstoi:CoherentIonosphericRadar .
+
+vin:MalbecGrape  a  owl:Thing , vin:WineGrape .
+
+vin:CotesDOrRegion  a  vin:Region ;
+        vin:locatedIn  vin:BourgogneRegion .
+
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine>
+        a                 owl:Ontology ;
+        rdfs:comment      "An example OWL ontology" , "Derived from the DAML Wine ontology at \n      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml\n      Substantially changed, in particular the Region based relations.\n    " ;
+        rdfs:label        "Wine Ontology" ;
+        owl:imports       <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food> ;
+        owl:priorVersion  <http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine> .
+
+vin:SouthAustraliaRegion
+        a              vin:Region ;
+        vin:locatedIn  vin:AustralianRegion .
+
+prov:Entity  a  owl:Class .
+
+vstoi:Questionnaire  a   owl:Class ;
+        rdfs:comment     "An instrument used to acquire data reported from human subjects." ;
+        rdfs:label       "Questionnaire" ;
+        rdfs:subClassOf  vstoi:Instrument .
+
+vstoi:SensingPerspective
+        a       owl:Class .
+
+vin:ChateauLafiteRothschildPauillac
+        a             vin:Pauillac ;
+        vin:hasMaker  vin:ChateauLafiteRothschild .
+
+vstoi:hasAccuracyR2  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SensingPerspective ;
+        rdfs:range   xsd:float .
+
+vstoi:MSTRadar  a        owl:Class ;
+        rdfs:label       "MST Radar" ;
+        rdfs:subClassOf  vstoi:MiddleAtmosphereRadar .
+
+vstoi:EarthThermosphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "From 80â€“85 km (upper boundary of the Mesosphere) to 640+ km, temperature increasing with height." ;
+        vstoi:hasName  "Earth Troposphere" .
+
+vin:Vintage  a           owl:Class ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onProperty   vin:hasVintageYear
+                         ] .
+
+vstoi:hasDescription  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+vstoi:hasHighRangeValue
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SensingPerspective ;
+        rdfs:range   xsd:float .
+
+vstoi:OpticalInstrument
+        a                 owl:Class ;
+        rdfs:label        "Optical Instrument" ;
+        rdfs:subClassOf   vstoi:PhysicalInstrument ;
+        owl:disjointWith  vstoi:Telescope .
+
+vstoi:Heliograph  a      owl:Class ;
+        rdfs:label       "Heliograph Optical Instrument" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vstoi:hasPlatform  a  owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Deployment ;
+        rdfs:range   vstoi:Platform .
+
+vstoi:Informant  a       owl:Class ;
+        rdfs:comment     "(Respondent)" ;
+        rdfs:label       "Informant" ;
+        rdfs:subClassOf  <http://purl.obolibrary.org/obo/SIO_000498> .
+
+vstoi:perspectiveOf  a  owl:ObjectProperty ;
+        rdfs:domain  vstoi:SensingPerspective ;
+        rdfs:range   vstoi:Detector .
+
+vin:AmericanWine  a         owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:USRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:Chardonnay  a           owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Full vin:Medium )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Strong vin:Moderate )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:White ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:ChardonnayGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:SantaBarbaraRegion
+        a              vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vin:PeterMccoyChardonnay
+        a              vin:Chardonnay ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:PeterMccoy ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .
+
+vin:Light  a    owl:Thing , vin:WineBody .
+
+vin:Longridge  a  vin:Winery .
+
+vstoi:SpaceCraft  a      owl:Class ;
+        rdfs:label       "Space Craft" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:MultiCollectorMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Multi Collector Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vstoi:Experience  a      owl:Class ;
+        rdfs:subClassOf  vstoi:Codebook .
+
+vstoi:Telescope  a       owl:Class ;
+        rdfs:label       "Telescope" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:hasInstrument  a  owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Deployment ;
+        rdfs:range   vstoi:Instrument .
+
+vin:SemillonGrape  a  owl:Thing , vin:WineGrape .
+
+vin:MariettaOldVinesRed
+        a              vin:RedTableWine ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Marietta ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .
+
+vstoi:OzoneSonde  a      owl:Class ;
+        rdfs:label       "Ozone Sounde" ;
+        rdfs:subClassOf  vstoi:Sounder .
+
+vstoi:InterferenceFilter
+        a                 owl:Class ;
+        rdfs:label        "Interface Filter Instrument" ;
+        rdfs:subClassOf   vstoi:FilterInstrument ;
+        owl:disjointWith  vstoi:LyotFilter .
+
+vin:AlsaceRegion  a    vin:Region ;
+        vin:locatedIn  vin:FrenchRegion .
+
+vin:StEmilion  a            owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Strong ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:CabernetSauvignonGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Bordeaux
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:StEmilionRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:PulignyMontrachetWhiteBurgundy
+        a              vin:WhiteBurgundy ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:PulignyMontrachet ;
+        vin:hasSugar   vin:Dry .
+
+vin:SeanThackreySiriusPetiteSyrah
+        a              vin:PetiteSyrah ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:SeanThackrey ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vin:MountadamRiesling
+        a              vin:DryRiesling ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Delicate ;
+        vin:hasMaker   vin:Mountadam ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SouthAustraliaRegion .
+
+vin:Cotturi  a  vin:Winery .
+
+vin:ChiantiClassico  a  vin:Chianti ;
+        vin:hasBody   vin:Medium ;
+        vin:hasMaker  vin:McGuinnesso .
+
+vin:TableWine  a            owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Dry ;
+                                owl:onProperty  vin:hasSugar
+                              ]
+                            ) .
+
+vin:PulignyMontrachet
+        a       vin:Winery .
+
+vstoi:CCD  a              owl:Class ;
+        rdfs:label        "CCD Imaging Detector" ;
+        rdfs:subClassOf   vstoi:ImagingDetector ;
+        owl:disjointWith  vstoi:Film , vstoi:Thermometer .
+
+vstoi:TropicOfCancer  a  owl:NamedIndividual ;
+        vstoi:hasName  "Tropic of Cancer" .
+
+vin:SelaksSauvignonBlanc
+        a              vin:SauvignonBlanc ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Selaks ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+vin:madeFromGrape  a        owl:ObjectProperty ;
+        rdfs:domain         vin:Wine ;
+        rdfs:range          vin:WineGrape ;
+        rdfs:subPropertyOf  food:madeFromFruit .
+
+vin:Dry  a      owl:Thing , vin:WineSugar .
+
+vin:TaylorPort  a     vin:Port ;
+        vin:hasMaker  vin:Taylor .
+
+vstoi:GroundBasedInstrument
+        a                owl:Class ;
+        rdfs:label       "Ground Based Instrument" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:hasDeployment  a  owl:ObjectProperty ;
+        rdfs:domain     vstoi:Platform ;
+        rdfs:range      vstoi:Deployment ;
+        owl:deprecated  "" .
+
+vin:MountadamPinotNoir
+        a              vin:PinotNoir ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Mountadam ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SouthAustraliaRegion .
+
+vin:PageMillWineryCabernetSauvignon
+        a              vin:CabernetSauvignon ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:PageMillWinery ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vin:CaliforniaRegion  a  vin:Region ;
+        vin:locatedIn  vin:USRegion .
+
+vstoi:EarthNorthPole  a  owl:NamedIndividual ;
+        vstoi:hasName  "North Pole" .
+
+vstoi:hasSerialNumber
+        a           owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+vin:Sancerre  a             owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:SauvignonBlancGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Medium ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Delicate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:OffDry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        owl:intersectionOf  ( vin:Loire
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:SancerreRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:Bordeaux  a             owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:BordeauxRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:WineColor  a         owl:Class ;
+        rdfs:subClassOf  vin:WineDescriptor ;
+        owl:oneOf        ( vin:White vin:Rose vin:Red ) .
+
+vin:WhiteBurgundy  a        owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:ChardonnayGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Burgundy vin:WhiteWine ) .
+
+vstoi:ZeroElectricCharge
+        a             owl:NamedIndividual ;
+        rdfs:comment  "electric charge = 0" .
+
+vin:KalinCellarsSemillon
+        a              vin:Semillon ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:KalinCellars ;
+        vin:hasSugar   vin:Dry .
+
+vin:PinotBlancGrape  a  owl:Thing , vin:WineGrape .
+
+vstoi:numAttachedDetectors
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:range   xsd:integer .
+
+vin:DryWine  a              owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Dry ;
+                                owl:onProperty  vin:hasSugar
+                              ]
+                            ) .
+
+vin:Meritage  a             owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a                  owl:Restriction ;
+                                owl:allValuesFrom  [ a          owl:Class ;
+                                                     owl:oneOf  ( vin:CabernetSauvignonGrape vin:CabernetFrancGrape vin:MalbecGrape vin:PetiteVerdotGrape vin:MerlotGrape )
+                                                   ] ;
+                                owl:onProperty     vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:minCardinality  "2"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:AnjouRegion  a     vin:Region ;
+        vin:locatedIn  vin:LoireRegion .
+
+vstoi:EarthSurface  a  owl:NamedIndividual ;
+        vstoi:hasName  "Earth Surface" .
+
+vstoi:Attachment  a  owl:Class .
+
+vstoi:hasInformantType
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Questionnaire ;
+        rdfs:range   xsd:string .
+
+vin:madeIntoWine  a    owl:ObjectProperty ;
+        owl:inverseOf  vin:madeFromGrape .
+
+vin:WineSugar  a         owl:Class ;
+        rdfs:subClassOf  vin:WineTaste ;
+        owl:oneOf        ( vin:Sweet vin:OffDry vin:Dry ) .
+
+vin:KathrynKennedyLateral
+        a              vin:Meritage ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Delicate ;
+        vin:hasMaker   vin:KathrynKennedy ;
+        vin:hasSugar   vin:Dry .
+
+vin:WhitehallLanePrimavera
+        a              vin:DessertWine ;
+        vin:hasBody    vin:Light ;
+        vin:hasFlavor  vin:Delicate ;
+        vin:hasSugar   vin:Sweet ;
+        vin:locatedIn  vin:NapaRegion .
+
+vstoi:TropicOfCapricorn
+        a              owl:NamedIndividual ;
+        vstoi:hasName  "Tropic of Capricorn" .
+
+vin:DryRiesling  a          owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Delicate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Light vin:Medium )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:White ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Riesling
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Dry ;
+                                owl:onProperty  vin:hasSugar
+                              ]
+                            ) .
+
+vin:Rose  a     vin:WineColor , owl:Thing .
+
+vstoi:hasName  a        owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range      xsd:string ;
+        owl:deprecated  "" .
+
+vin:yearValue  a     owl:DatatypeProperty ;
+        rdfs:domain  vin:VintageYear ;
+        rdfs:range   xsd:positiveInteger .
+
+vstoi:FilterInstrument
+        a                 owl:Class ;
+        rdfs:label        "Filter Instrument" ;
+        rdfs:subClassOf   vstoi:PhysicalInstrument ;
+        owl:disjointWith  vstoi:OpticalInstrument , vstoi:Telescope .
+
+vin:NewZealandRegion  a  vin:Region .
+
+vstoi:hasDetector  a  owl:ObjectProperty ;
+        rdfs:domain  vstoi:Deployment ;
+        rdfs:range   vstoi:Detector .
+
+vin:hasColor  a             owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:domain         vin:Wine ;
+        rdfs:range          vin:WineColor ;
+        rdfs:subPropertyOf  vin:hasWineDescriptor .
+
+vin:RedBurgundy  a          owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:PinotNoirGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Burgundy vin:RedWine ) .
+
+vstoi:Item  a            owl:Class ;
+        rdfs:subClassOf  vstoi:Detector .
+
+vstoi:ImagingDetector
+        a                owl:Class ;
+        rdfs:label       "Imaging Detector" ;
+        rdfs:subClassOf  vstoi:Detector .
+
+vin:ChateauChevalBlanc
+        a       vin:Winery .
+
+<http://semanticscience.org/resource/SIO_000068>
+        a            owl:ObjectProperty , owl:ReflexiveProperty , owl:TransitiveProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:label   "is part of" ;
+        rdfs:range   vstoi:Instrument .
+
+vin:OffDry  a              owl:Thing , vin:WineSugar ;
+        owl:differentFrom  vin:Sweet , vin:Dry .
+
+vin:hasMaker  a  owl:ObjectProperty , owl:FunctionalProperty .
+
+vin:VintageYear  a  owl:Class .
+
+vstoi:SodiumLidar  a     owl:Class ;
+        rdfs:label       "Sodium Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vstoi:hasMaxResponseTimeValue
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Detector ;
+        rdfs:range   xsd:float .
+
+vstoi:LyotFilter  a      owl:Class ;
+        rdfs:label       "Lyot Filter Instrument" ;
+        rdfs:subClassOf  vstoi:FilterInstrument .
+
+vin:hasSugar  a             owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:range          vin:WineSugar ;
+        rdfs:subPropertyOf  vin:hasWineDescriptor .
+
+vin:ChateauMorgonBeaujolais
+        a             vin:Beaujolais ;
+        vin:hasMaker  vin:ChateauMorgon .
+
+vstoi:hasAccuracyPercentage
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:SensingPerspective ;
+        rdfs:range   xsd:float .
+
+vin:Corbans  a  vin:Winery .
+
+vstoi:EarthUpperAtmosphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "The region of the Earth's Atmosphere above the mesopause." ;
+        vstoi:hasName  "Earth Upper Atmosphere" .
+
+vin:SantaCruzMountainVineyard
+        a       vin:Winery .
+
+vstoi:hasQuantumEfficiency
+        a            owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Detector ;
+        rdfs:range   xsd:string .
+
+vin:Anjou  a                owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Light ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:OffDry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Rose ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Delicate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        owl:intersectionOf  ( vin:Loire
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:AnjouRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:PauillacRegion  a  vin:Region ;
+        vin:locatedIn  vin:MedocRegion .
+
+vin:Sauternes  a         owl:Class ;
+        rdfs:subClassOf  vin:Bordeaux , vin:LateHarvest ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:Medium ;
+                           owl:onProperty  vin:hasBody
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:SauterneRegion ;
+                           owl:onProperty  vin:locatedIn
+                         ] ;
+        rdfs:subClassOf  [ a               owl:Restriction ;
+                           owl:hasValue    vin:White ;
+                           owl:onProperty  vin:hasColor
+                         ] .
+
+vstoi:IonCyclotronMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Ion Cyclotron Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vstoi:IonosphericDopplerRadar
+        a                owl:Class ;
+        rdfs:label       "Ionospheric Doppler Radar" ;
+        rdfs:subClassOf  vstoi:DopplerRadar .
+
+vstoi:AirglowImager  a   owl:Class ;
+        rdfs:label       "Airglow Imager" ;
+        rdfs:subClassOf  vstoi:Imager .
+
+vin:SweetRiesling  a        owl:Class ;
+        rdfs:subClassOf     vin:DessertWine ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Moderate vin:Strong )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Full ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:Riesling
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Sweet ;
+                                owl:onProperty  vin:hasSugar
+                              ]
+                            ) .
+
+vin:StEmilionRegion  a  vin:Region ;
+        vin:locatedIn  vin:BordeauxRegion .
+
+vstoi:MassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:Spectrometer .
+
+vstoi:EarthMagnetosphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "The region of the Earth Atmosphere where the Earth's magnetic field interacts with the solar wind from the Sun. It extends for tens of thousands of kilometers, with a long tail away from the Sun." ;
+        vstoi:hasName  "Earth Magnetosphere" .
+
+vin:FoxenCheninBlanc  a  vin:CheninBlanc ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Foxen ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SantaBarbaraRegion .
+
+vin:Winery  a   owl:Class .
+
+vstoi:IncoherentScatterRadar
+        a                owl:Class ;
+        rdfs:label       "Incoherent Scatter Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vstoi:Magnetometer  a    owl:Class ;
+        rdfs:label       "Magnetometer" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vin:PetiteSyrah  a          owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Moderate vin:Strong )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Medium vin:Full )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:PetiteSyrahGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:hasContent  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:ResponseOption ;
+        rdfs:range   xsd:string .
+
+vin:PortugalRegion  a  vin:Region .
+
+vin:ClosDeVougeotCotesDOr
+        a             vin:CotesDOr ;
+        vin:hasMaker  vin:ClosDeVougeot .
+
+vin:WhiteTableWine  a       owl:Class ;
+        owl:intersectionOf  ( vin:TableWine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:White ;
+                                owl:onProperty  vin:hasColor
+                              ]
+                            ) .
+
+vin:Bancroft  a  vin:Winery .
+
+vin:Year1998  a        vin:VintageYear ;
+        vin:yearValue  "1998"^^xsd:positiveInteger .
+
+vstoi:NegativeElectricCharge
+        a             owl:NamedIndividual ;
+        rdfs:comment  "electric charge < 0" .
+
+vin:MargauxRegion  a   vin:Region ;
+        vin:locatedIn  vin:MedocRegion .
+
+vin:SauvignonBlanc  a       owl:Class ;
+        owl:intersectionOf  ( vin:SemillonOrSauvignonBlanc
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:SauvignonBlancGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:Antarctic  a     owl:NamedIndividual ;
+        vstoi:hasName  "Antarctic" .
+
+vstoi:SunCorona  a     owl:NamedIndividual ;
+        vstoi:hasName  "Sun Corona" .
+
+vstoi:SpectroPhotometer
+        a                owl:Class ;
+        rdfs:label       "Spectro Photometer" ;
+        rdfs:subClassOf  vstoi:Spectrometer , vstoi:Photometer .
+
+vin:BancroftChardonnay
+        a              vin:Chardonnay ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Bancroft ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NapaRegion .
+
+vin:ChateauMargauxWinery
+        a       vin:Winery .
+
+vin:CortonMontrachetWhiteBurgundy
+        a              vin:WhiteBurgundy ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:CortonMontrachet ;
+        vin:hasSugar   vin:Dry .
+
+vstoi:isInstrumentAttachment
+        a             owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:comment  "Some detectors are permanently attached to an intrument. This property documents the intrument model that a detector is permanently attached." ;
+        rdfs:domain   vstoi:Detector ;
+        rdfs:range    vstoi:Instrument .
+
+vin:EarlyHarvest  a      owl:Class ;
+        rdfs:subClassOf  vin:Wine ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  [ a          owl:Class ;
+                                                owl:oneOf  ( vin:Dry vin:OffDry )
+                                              ] ;
+                           owl:onProperty     vin:hasSugar
+                         ] .
+
+vin:SelaksIceWine  a   vin:IceWine ;
+        vin:hasBody    vin:Medium ;
+        vin:hasColor   vin:White ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Selaks ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+vin:Red  a      vin:WineColor , owl:Thing .
+
+vstoi:fromDataset  a  owl:ObjectProperty .
+
+vstoi:SpectroPolarimeter
+        a                owl:Class ;
+        rdfs:label       "Spectro Polarimeter" ;
+        rdfs:subClassOf  vstoi:Polarimeter , vstoi:Spectrometer .
+
+vstoi:hasInstrumentOperatingMode
+        a            owl:ObjectProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:range   vstoi:InstrumentOperatingMode .
+
+vin:GermanyRegion  a  vin:Region .
+
+vin:PeterMccoy  a  vin:Winery .
+
+vin:WineGrape  a         owl:Class ;
+        rdfs:subClassOf  food:Grape .
+
+vin:Meursault  a            owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Full ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        owl:intersectionOf  ( vin:WhiteBurgundy
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:MeursaultRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:CaliforniaWine  a       owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:CaliforniaRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:SangioveseGrape  a  vin:WineGrape .
+
+vstoi:hasStatus  a    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:comment  "possible values: [Draft, UnderReview, Published, Deprecated]" ;
+        rdfs:domain   vstoi:SIRElement ;
+        rdfs:range    rdfs:Literal .
+
+vin:Beringer  a  vin:Winery .
+
+vstoi:SpectroHeliograph
+        a                owl:Class ;
+        rdfs:label       "Spectro Heliograph Optical Instrument" ;
+        rdfs:subClassOf  vstoi:Spectrometer , vstoi:Heliograph .
+
+vin:PageMillWinery  a  vin:Winery .
+
+vin:DryWhiteWine  a         owl:Class ;
+        owl:intersectionOf  ( vin:DryWine vin:WhiteWine ) .
+
+vin:PinotNoir  a            owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:PinotNoirGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:SweetWine  a            owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Sweet ;
+                                owl:onProperty  vin:hasSugar
+                              ]
+                            ) .
+
+vin:WineBody  a          owl:Class ;
+        rdfs:subClassOf  vin:WineTaste ;
+        owl:oneOf        ( vin:Light vin:Medium vin:Full ) .
+
+vstoi:CalciumLidar  a    owl:Class ;
+        rdfs:label       "Calcium Lidar" ;
+        rdfs:subClassOf  vstoi:Lidar .
+
+vin:ClosDeVougeot  a  vin:Winery .
+
+vstoi:EarthMesosphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "From about 50 km (upper boundary of the Stratosphere) to the range of 80 km to 85 km, temperature decreasing with height." ;
+        vstoi:hasName  "Earth Mesosphere" .
+
+vin:Moderate  a  owl:Thing , vin:WineFlavor .
+
+<http://hadatac.org/ont/vstoi>
+        a               owl:Ontology ;
+        owl:versionIRI  <http://hadatac.org/ont/vstoi/0.4> .
+
+vin:Medoc  a                owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        owl:intersectionOf  ( vin:Bordeaux
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:MedocRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:CabernetSauvignon
+        a                   owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Medium vin:Full )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Moderate vin:Strong )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:CabernetSauvignonGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vstoi:maxDetachableDetectors
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Instrument ;
+        rdfs:range   xsd:integer .
+
+vstoi:STRadar  a         owl:Class ;
+        rdfs:label       "ST Radar" ;
+        rdfs:subClassOf  vstoi:CoherentIonosphericRadar .
+
+vstoi:SingleChannelPhotometer
+        a                owl:Class ;
+        rdfs:label       "Single Channel Photometer" ;
+        rdfs:subClassOf  vstoi:Photometer .
+
+vstoi:PositiveElectricCharge
+        a             owl:NamedIndividual ;
+        rdfs:comment  "electric charge > 0" .
+
+vin:Sweet  a               owl:Thing , vin:WineSugar ;
+        owl:differentFrom  vin:Dry .
+
+vstoi:NegativeOneElectricCharge
+        a             owl:NamedIndividual ;
+        rdfs:comment  "electric charge = -1" .
+
+vin:hasWineDescriptor
+        a            owl:ObjectProperty ;
+        rdfs:domain  vin:Wine ;
+        rdfs:range   vin:WineDescriptor .
+
+vin:MountEdenVineyardEstatePinotNoir
+        a              vin:PinotNoir ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:MountEdenVineyard ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:EdnaValleyRegion .
+
+vin:WhiteBordeaux  a        owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:SemillonGrape vin:SauvignonBlancGrape )
+                                                 ] ;
+                              owl:onProperty     vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Bordeaux vin:WhiteWine ) .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( vin:Delicate vin:Moderate vin:Strong )
+] .
+
+vin:Region  a   owl:Class .
+
+vin:SaucelitoCanyon  a  vin:Winery .
+
+vstoi:ArcticCircle  a  owl:NamedIndividual ;
+        vstoi:hasName  "Arctic Circle" .
+
+vstoi:SunAtmosphere  a  owl:NamedIndividual ;
+        vstoi:hasName  "Sun Atmosphere" .
+
+vstoi:Arctic  a        owl:NamedIndividual ;
+        vstoi:hasName  "Arctic" .
+
+vin:CheninBlancGrape  a  owl:Thing , vin:WineGrape .
+
+vin:SeanThackrey  a  vin:Winery .
+
+vstoi:EarthIonosphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "The region of the Earth Atmosphere containing ions: approximately the mesosphere and thermosphere up to 550 km." ;
+        vstoi:hasName  "Earth Ionosphere" .
+
+vstoi:Observatory  a  owl:Class ;
+        rdfs:comment  "A facility which houses and operates one or more instruments either synoptically or periodically.  It has a physical location and operating hours.  It can be either manned or remote." ;
+        rdfs:label    "Observatory" .
+
+vin:ChateauMargaux  a  vin:Margaux ;
+        vin:hasMaker  vin:ChateauMargauxWinery .
+
+vstoi:Codebook  a        owl:Class ;
+        rdfs:subClassOf  vstoi:SIRElement .
+
+vin:SauterneRegion  a  vin:Region ;
+        vin:locatedIn  vin:BordeauxRegion .
+
+vin:Zinfandel  a            owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Full vin:Medium )
+                                                 ] ;
+                              owl:onProperty     vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:Moderate vin:Strong )
+                                                 ] ;
+                              owl:onProperty     vin:hasFlavor
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:ZinfandelGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:FrenchWine  a           owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:FrenchRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+<http://purl.obolibrary.org/obo/SIO_000776>
+        a                owl:Class ;
+        rdfs:subClassOf  <http://purl.obolibrary.org/obo/SIO_000000> .
+
+vstoi:EarthTroposphere
+        a              owl:NamedIndividual ;
+        rdfs:comment   "From the Greek word \"tropos\" meaning to turn or mix. The troposphere is the lowest layer of the atmosphere starting at the surface going up to between 7 km at the poles and 17 km at the equator with some variation due to weather factors. The troposphere has a great deal of vertical mixing due to solar heating at the surface. This heating warms air masses, which then rise to release latent heat as sensible heat that further buoys the air mass. This process continues until all water vapor is removed. In the troposphere, on average, temperature decreases with height due to expansive cooling." ;
+        vstoi:hasName  "Earth Troposphere" .
+
+vstoi:hasDeploymentSynonym
+        a            owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Deployment ;
+        rdfs:range   xsd:string .
+
+vstoi:IonSonde  a        owl:Class ;
+        rdfs:label       "Ion Sonde" ;
+        rdfs:subClassOf  vstoi:Sounder .
+
+vin:RedBordeaux  a          owl:Class ;
+        rdfs:subClassOf     [ a                  owl:Restriction ;
+                              owl:allValuesFrom  [ a          owl:Class ;
+                                                   owl:oneOf  ( vin:CabernetSauvignonGrape vin:MerlotGrape )
+                                                 ] ;
+                              owl:onProperty     vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Bordeaux vin:RedWine ) .
+
+vstoi:PhysicalInstrument
+        a                owl:Class ;
+        rdfs:comment     "A device that measures a physical phenomenon or parameter.  At a minimum, it possesses a detector which produces a signal from which the desired quantity is calculated or inferred.  The detector signal possesses the information needed to either obtain the value of the phenomenon (e.g, temperature: a voltage is converted into a temperature unit) or infer its value using further processing and computation (magnetic fields: detector intensities at a different wavelengths and polarization states are processed to infer a magnetic field strength).\n \nAn instrument does not necessarily require a way to store its measured quantity (e.g, a hard disk)." ;
+        rdfs:label       "Physical Instrument" ;
+        rdfs:subClassOf  vstoi:Instrument .
+
+vin:Semillon  a             owl:Class ;
+        owl:intersectionOf  ( vin:SemillonOrSauvignonBlanc
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:SemillonGrape ;
+                                owl:onProperty  vin:madeFromGrape
+                              ]
+                              [ a                   owl:Restriction ;
+                                owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                                owl:onProperty      vin:madeFromGrape
+                              ]
+                            ) .
+
+vin:DessertWine  a       owl:Class ;
+        rdfs:subClassOf  vin:Wine ;
+        rdfs:subClassOf  [ a                  owl:Restriction ;
+                           owl:allValuesFrom  [ a          owl:Class ;
+                                                owl:oneOf  ( vin:OffDry vin:Sweet )
+                                              ] ;
+                           owl:onProperty     vin:hasSugar
+                         ] .
+
+vstoi:EarthEquator  a  owl:NamedIndividual ;
+        vstoi:hasName  "Equator" .
+
+vstoi:ResonanceIonizationMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Resonance Ionization Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:Strong  a   owl:Thing , vin:WineFlavor .
+
+vstoi:hasPixelScale  a  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:domain  vstoi:Detector ;
+        rdfs:range   xsd:string .
+
+vin:Marietta  a  vin:Winery .
+
+vin:ChardonnayGrape  a  vin:WineGrape .
+
+vstoi:hasInstruction  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:Questionnaire ;
+        rdfs:range   xsd:string .
+
+vin:TexasRegion  a     vin:Region ;
+        vin:locatedIn  vin:USRegion .
+
+vin:StonleighSauvignonBlanc
+        a              vin:SauvignonBlanc ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Delicate ;
+        vin:hasMaker   vin:Stonleigh ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:NewZealandRegion .
+
+[ a                    owl:AllDifferent ;
+  owl:distinctMembers  ( vin:Red vin:White vin:Rose )
+] .
+
+vstoi:Sun  a           owl:NamedIndividual ;
+        vstoi:hasName  "Sun" .
+
+vstoi:hasX  a           owl:DatatypeProperty ;
+        rdfs:domain     vstoi:Platform ;
+        rdfs:range      xsd:float ;
+        owl:deprecated  "" .
+
+vstoi:AntarcticCircle
+        a              owl:NamedIndividual ;
+        vstoi:hasName  "Antarctic Circle" .
+
+vin:Beaujolais  a           owl:Class ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Dry ;
+                              owl:onProperty  vin:hasSugar
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Delicate ;
+                              owl:onProperty  vin:hasFlavor
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Red ;
+                              owl:onProperty  vin:hasColor
+                            ] ;
+        rdfs:subClassOf     [ a                   owl:Restriction ;
+                              owl:maxCardinality  "1"^^xsd:nonNegativeInteger ;
+                              owl:onProperty      vin:madeFromGrape
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:Light ;
+                              owl:onProperty  vin:hasBody
+                            ] ;
+        rdfs:subClassOf     [ a               owl:Restriction ;
+                              owl:hasValue    vin:GamayGrape ;
+                              owl:onProperty  vin:madeFromGrape
+                            ] ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:BeaujolaisRegion ;
+                                owl:onProperty  vin:locatedIn
+                              ]
+                            ) .
+
+vin:CongressSpringsSemillon
+        a              vin:Semillon ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:CongressSprings ;
+        vin:hasSugar   vin:Dry .
+
+vstoi:GlowDischargeMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Glow Discharge Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vin:CortonMontrachet  a  vin:Winery .
+
+vin:WineDescriptor  a  owl:Class ;
+        rdfs:comment  "Made WineDescriptor unionType of tastes and color" ;
+        owl:unionOf   ( vin:WineTaste vin:WineColor ) .
+
+vstoi:Model  a           owl:Class ;
+        rdfs:comment     "An instrument used to generate synthetic data values for formuli that describe entities of interest." ;
+        rdfs:label       "Model" ;
+        rdfs:subClassOf  vstoi:Instrument .
+
+vstoi:MultiChannelPhotometer
+        a                owl:Class ;
+        rdfs:label       "Multi Channel Photometer" ;
+        rdfs:subClassOf  vstoi:Photometer .
+
+vin:ZinfandelGrape  a  vin:WineGrape .
+
+vin:MountEdenVineyardEdnaValleyChardonnay
+        a              vin:Chardonnay ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:MountEdenVineyard ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:EdnaValleyRegion .
+
+vstoi:isFromInstrument
+        a               owl:ObjectProperty ;
+        rdfs:domain     vstoi:Dataset ;
+        rdfs:range      vstoi:Instrument ;
+        owl:deprecated  "" .
+
+vin:SaucelitoCanyonZinfandel1998
+        a                   vin:Zinfandel ;
+        vin:hasBody         vin:Medium ;
+        vin:hasFlavor       vin:Moderate ;
+        vin:hasMaker        vin:SaucelitoCanyon ;
+        vin:hasSugar        vin:Dry ;
+        vin:hasVintageYear  vin:Year1998 ;
+        vin:locatedIn       vin:ArroyoGrandeRegion .
+
+vstoi:Spectrograph  a    owl:Class ;
+        rdfs:label       "Spectrograph" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:hasFocalLength  a  owl:DatatypeProperty ;
+        rdfs:domain  vstoi:OpticalInstrument ;
+        rdfs:range   xsd:string .
+
+vin:Foxen  a    vin:Winery .
+
+vin:MountadamChardonnay
+        a              vin:Chardonnay ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:Mountadam ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SouthAustraliaRegion .
+
+vin:KalinCellars  a  vin:Winery .
+
+vstoi:LFRadar  a         owl:Class ;
+        rdfs:label       "LF Radar" ;
+        rdfs:subClassOf  vstoi:MiddleAtmosphereRadar .
+
+vstoi:hasResponseOption
+        a            owl:ObjectProperty ;
+        rdfs:domain  vstoi:Codebook ;
+        rdfs:range   vstoi:ResponseOption .
+
+vstoi:SparkSourceMassSpectrometer
+        a                owl:Class ;
+        rdfs:label       "Spark Source Mass Spectrometer" ;
+        rdfs:subClassOf  vstoi:MassSpectrometer .
+
+vstoi:MiddleAtmosphereRadar
+        a                owl:Class ;
+        rdfs:label       "Middle Stmosphere Radar" ;
+        rdfs:subClassOf  vstoi:Radar .
+
+vin:CongressSprings  a  vin:Winery .
+
+vstoi:Interferometer  a  owl:Class ;
+        rdfs:comment     "An instrument that uses the principle of interference of electromagnetic waves for purposes of measurement. Note: Interferometers may be used to measure a variety of physical variables, such as displacement (distance), temperature, pressure, and strain." ;
+        rdfs:label       "Interferometer" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vstoi:Imager  a          owl:Class ;
+        rdfs:label       "Imager" ;
+        rdfs:subClassOf  vstoi:OpticalInstrument .
+
+vin:SantaCruzMountainsRegion
+        a              vin:Region ;
+        vin:locatedIn  vin:CaliforniaRegion .
+
+vin:PinotNoirGrape  a  vin:WineGrape .
+
+vin:Medium  a   owl:Thing , vin:WineBody .
+
+vin:RedWine  a              owl:Class ;
+        owl:intersectionOf  ( vin:Wine
+                              [ a               owl:Restriction ;
+                                owl:hasValue    vin:Red ;
+                                owl:onProperty  vin:hasColor
+                              ]
+                            ) .
+
+vin:CotturiZinfandel  a  vin:Zinfandel ;
+        vin:hasBody    vin:Full ;
+        vin:hasFlavor  vin:Strong ;
+        vin:hasMaker   vin:Cotturi ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .
+
+vstoi:Sounder  a         owl:Class ;
+        rdfs:label       "Sounder" ;
+        rdfs:subClassOf  vstoi:PhysicalInstrument .
+
+vstoi:InstrumentOperatingMode
+        a             owl:Class ;
+        rdfs:comment  "A configuration which allows the instrument to produce the required signal. " ;
+        rdfs:label    "Instrument Operating Mode" .
+
+vin:VentanaCheninBlanc
+        a              vin:CheninBlanc ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Ventana ;
+        vin:hasSugar   vin:OffDry ;
+        vin:locatedIn  vin:CentralCoastRegion .
+
+vin:MariettaCabernetSauvignon
+        a              vin:CabernetSauvignon ;
+        vin:hasBody    vin:Medium ;
+        vin:hasFlavor  vin:Moderate ;
+        vin:hasMaker   vin:Marietta ;
+        vin:hasSugar   vin:Dry ;
+        vin:locatedIn  vin:SonomaRegion .

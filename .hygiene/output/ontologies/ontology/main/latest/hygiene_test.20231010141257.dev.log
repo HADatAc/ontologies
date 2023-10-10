@@ -1,0 +1,22 @@
+TEST: Subproperties domains should not cross
+error
+TEST: Every Class and Property defined in FIBO must have a rdfs:label and skos:definition
+error
+TEST: Every Ontology defined in FIBO must have a rdfs:label,  sm:copyright, dct:license, dct:abstract
+error
+TEST: Subproperties ranges should not cross
+error
+TEST: rdfs:comment shouldn't be used for FIBO annotation.
+error
+TEST: Labels should be unique across FIBO.
+error,object
+TEST: Text should not use special characters
+error,s,o
+TEST: If we refer to something, it should have a type
+error
+TEST: Definitions shouldn't be circular.
+error,definition,label
+TEST: We should not make explicit references to owl:Thing
+error
+TEST: Object properties shouldn't have more than one inverse.
+error,p1,p2
