@@ -22,13 +22,6 @@
 #    Classes
 #################################################################
 
-###  http://hadatac.org/ont/prms#C51748
-prms:C51748 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C15189 ;
-            rdfs:comment "Removal of tissue from the lung, for microscopic examination." ;
-            rdfs:label "Lung Biopsy" .
-
-
 ###  http://hadatac.org/ont/prms#SimulatorDetectorStem
 prms:SimulatorDetectorStem rdf:type owl:Class ;
                            rdfs:subClassOf vstoi:DetectorStem ;
@@ -39,19 +32,22 @@ prms:SimulatorDetectorStem rdf:type owl:Class ;
 ncit: rdf:type owl:Class ;
       rdfs:subClassOf prms:SimulatorDetectorStem ;
       rdfs:comment ""@en ;
-      rdfs:label "Endoscopic Procedure" ,
-                 "Obstetric Procedure" ,
-                 "Surgical Procedure" ,
-                 "Therapeutic Procedure" .
-#########################
-#    Diagnostic Procedure
-#########################
+      rdfs:label "Surgical Procedure" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C18020
-ncit:C18020 rdf:type owl:Class ;
-            rdfs:subClassOf prms:SimulatorDetectorStem ;
-            rdfs:comment "Any procedure or test to diagnose a disease or disorder."@en ;
-            rdfs:label "Diagnostic Procedure" .
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C114141
+ncit:C114141 rdf:type owl:Class ;
+             rdfs:subClassOf ncit:C46088 ;
+             rdfs:comment "A cesarean delivery scheduled at a patient's request or provider preference without medical or obstetric indications."@en ;
+             rdfs:label "Elective Cesarean Delivery" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C122008
+ncit:C122008 rdf:type owl:Class ;
+             rdfs:subClassOf ncit:C18020 ;
+             rdfs:comment "Tests and assessments pertaining to the cardiovascular system."@en ;
+             rdfs:label "Cardiovascular Examination" .
+
 
 ###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15189
 ncit:C15189 rdf:type owl:Class ;
@@ -59,69 +55,21 @@ ncit:C15189 rdf:type owl:Class ;
             rdfs:comment "The removal of tissue specimens or fluid from the living body for microscopic examination, performed to establish a diagnosis.."@en ;
             rdfs:label "Biopsy" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51748
-ncit:C51748 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C15189 ;
-            rdfs:comment "Removal of tissue from the lung, for microscopic examination."@en ;
-            rdfs:label "Lung Biopsy" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51692
-ncit:C51692 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C15189 ;
-            rdfs:comment "Removal of a portion of skin tissue, for microscopic examination."@en ;
-            rdfs:label "Skin Biopsy" .
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15329
+ncit:C15329 rdf:type owl:Class ;
+            rdfs:subClassOf prms:SimulatorDetectorStem ;
+            rdfs:comment "A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery."@en ;
+            rdfs:label "Surgical Procedure" ,
+                       "Therapeutic Procedure" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C122008
-ncit:C122008 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C18020 ;
-            rdfs:comment "Tests and assessments pertaining to the cardiovascular system."@en ;
-            rdfs:label "Cardiovascular Examination" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16502
-ncit:C16502 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C18020 ;
-            rdfs:comment "Any method that uses a visual display of structural or functional patterns of organs or tissues for diagnostic evaluation."@en ;
-            rdfs:label "Diagnostic Imaging" .
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15406
+ncit:C15406 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C15419 ;
+            rdfs:comment "The use of any device, marker, or other means for the purpose of detecting the presence of a tumor, usually before there are any symptoms."@en ;
+            rdfs:label "Cancer Screening" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17204
-ncit:C17204 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C16502 ;
-            rdfs:comment "A method of examining structures within the body by scanning them with X rays and using a computer to construct a series of cross-sectional scans along a single axis."@en ;
-            rdfs:label "Computed Tomography" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19337
-ncit:C19337 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C16502 ;
-            rdfs:comment "Use of ultrasound for imaging for diagnostic purposes."@en ;
-            rdfs:label "Diagnostic Ultrasound" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62781
-ncit:C62781 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C19337 ;
-            rdfs:comment "Diagnostic imaging that uses sound waves (ultrasound) applying the Doppler effect, with frequency-shifted ultrasound reflections produced by moving targets (usually red blood cells) in the bloodstream along the ultrasound axis in direct proportion to the velocity of movement of the targets, to determine both direction and velocity of blood flow."@en ;
-            rdfs:label "Doppler Ultrasound" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25305
-ncit:C25305 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C18020 ;
-            rdfs:comment "An appraisal or evaluation of a patient's condition by a clinician that is based on a physical exam, medical history, and the patient's account of symptoms."@en ;
-            rdfs:label "Medical Examination" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C158323
-ncit:C158323 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C25305 ;
-            rdfs:comment "A systematic evaluation of the mouth, face, and neck, which may include tooth counting, cleaning and visual assessments for abnormalities such as caries, gum disease, oral cancer, and structural malformations."@en ;
-            rdfs:label "Dental Examination" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38060
-ncit:C38060 rdf:type owl:Class ;
-            rdfs:subClassOf ncit:C25305 ;
-            rdfs:comment "A test performed by an ophthalmologist or optometrist assessing vision and ability to focus on and discern objects, as well as other tests and examinations pertaining to the eyes."@en ;
-            rdfs:label "Eye Examination" .
-
-######################
-#    Disease Screening
-######################
 
 ###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15419
 ncit:C15419 rdf:type owl:Class ;
@@ -129,33 +77,83 @@ ncit:C15419 rdf:type owl:Class ;
             rdfs:comment "The use of any device, marker, or other means for the purpose of detecting the presence of disease, usually in asymptomatic individuals."@en ;
             rdfs:label "Disease Screening" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15406
-ncit:C15406 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15419 ;
-            rdfs:comment "The use of any device, marker, or other means for the purpose of detecting the presence of a tumor, usually before there are any symptoms."@en ;
-            rdfs:label "Cancer Screening" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15546
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15546
 ncit:C15546 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15406 ;
+            rdfs:subClassOf ncit:C15406 ;
             rdfs:comment "Early detection of breast cancer involving asymptomatic women. Generally done in the population with higher risk, due to environmental or genetic factors."@en ;
             rdfs:label "Breast Cancer Screening" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15575
-ncit:C15575 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15406 ;
-            rdfs:comment ""@en ;
-            rdfs:label "Screening for Lung Cancer" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15547
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15547
 ncit:C15547 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15406 ;
+            rdfs:subClassOf ncit:C15406 ;
             rdfs:comment ""@en ;
             rdfs:label "Screening for Skin Cancer" .
 
-#########################
-#    Endoscopic Procedure
-#########################
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15575
+ncit:C15575 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C15406 ;
+            rdfs:comment ""@en ;
+            rdfs:label "Screening for Lung Cancer" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C158070
+ncit:C158070 rdf:type owl:Class ;
+             rdfs:subClassOf ncit:C15329 ;
+             rdfs:comment "The use of muscle relaxants to induce muscle paralysis."@en ;
+             rdfs:label "Neuromuscular Blockade" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C158323
+ncit:C158323 rdf:type owl:Class ;
+             rdfs:subClassOf ncit:C25305 ;
+             rdfs:comment "A systematic evaluation of the mouth, face, and neck, which may include tooth counting, cleaning and visual assessments for abnormalities such as caries, gum disease, oral cancer, and structural malformations."@en ;
+             rdfs:label "Dental Examination" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16120
+ncit:C16120 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C49163 ;
+            rdfs:comment "Surgery performed on any part of the abdominal region of the body."@en ;
+            rdfs:label "Abdominal Surgical Procedure" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16185
+ncit:C16185 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C15329 ;
+            rdfs:comment "The use of imaging techniques to provide the basis for therapy, e.g., enabling surgeons to visualize internal structures through an automated overlay of 3D reconstructions of internal anatomy on top of live video views of a patient. Also used for guidance of biopsy needles."@en ;
+            rdfs:label "Image-Guided Therapy" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16186
+ncit:C16186 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C49163 ;
+            rdfs:comment "A surgical procedure to treat and correct deformities, diseases, and injuries to the skeletal system, its articulations, and associated structures."@en ;
+            rdfs:label "Orthopedic Surgical Procedure" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16366
+ncit:C16366 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C16546 ;
+            rdfs:comment "Endoscopic examination of the tracheobronchial tree."@en ;
+            rdfs:label "Bronchoscopy" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16430
+ncit:C16430 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C16546 ;
+            rdfs:comment "A procedure in which the bile ducts, pancreatic duct, and gallbladder are examined using a combination of endoscopy and fluoroscopy."@en ;
+            rdfs:label "Endoscopic Retrograde Cholangiopancreatography" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16502
+ncit:C16502 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C18020 ;
+            rdfs:comment "Any method that uses a visual display of structural or functional patterns of organs or tissues for diagnostic evaluation."@en ;
+            rdfs:label "Diagnostic Imaging" .
+
 
 ###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16546
 ncit:C16546 rdf:type owl:Class ;
@@ -163,39 +161,118 @@ ncit:C16546 rdf:type owl:Class ;
             rdfs:comment "A diagnostic or therapeutic procedure in which an endoscope is inserted in a tubular organ to examine the structural architecture and/or remove abnormal tissues."@en ;
             rdfs:label "Endoscopic Procedure" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16366
-ncit:C16366 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C16546 ;
-            rdfs:comment "Endoscopic examination of the tracheobronchial tree."@en ;
-            rdfs:label "Bronchoscopy" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51688
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17204
+ncit:C17204 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C16502 ;
+            rdfs:comment "A method of examining structures within the body by scanning them with X rays and using a computer to construct a series of cross-sectional scans along a single axis."@en ;
+            rdfs:label "Computed Tomography" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C18020
+ncit:C18020 rdf:type owl:Class ;
+            rdfs:subClassOf prms:SimulatorDetectorStem ;
+            rdfs:comment "Any procedure or test to diagnose a disease or disorder."@en ;
+            rdfs:label "Diagnostic Procedure" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C19337
+ncit:C19337 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C16502 ;
+            rdfs:comment "Use of ultrasound for imaging for diagnostic purposes."@en ;
+            rdfs:label "Diagnostic Ultrasound" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C25305
+ncit:C25305 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C18020 ;
+            rdfs:comment "An appraisal or evaluation of a patient's condition by a clinician that is based on a physical exam, medical history, and the patient's account of symptoms."@en ;
+            rdfs:label "Medical Examination" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C38060
+ncit:C38060 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C25305 ;
+            rdfs:comment "A test performed by an ophthalmologist or optometrist assessing vision and ability to focus on and discern objects, as well as other tests and examinations pertaining to the eyes."@en ;
+            rdfs:label "Eye Examination" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C46088
+ncit:C46088 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C92893 ;
+            rdfs:comment "Surgical delivery of one or more intrauterine fetuses though an abdominal incision."@en ;
+            rdfs:label "Cesarean Section" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49163
+ncit:C49163 rdf:type owl:Class ;
+            rdfs:subClassOf ncit: ;
+            rdfs:comment ""@en ;
+            rdfs:label "Surgical Procedure by Site or System" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51688
 ncit:C51688 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C16546 ;
+            rdfs:subClassOf ncit:C16546 ;
             rdfs:comment "Complete or partial removal of a polypoid lesion from the mucosal surface of the large intestine."@en ;
             rdfs:label "Colonoscopic Polypectomy" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16430
-ncit:C16430 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C16546 ;
-            rdfs:comment "A procedure in which the bile ducts, pancreatic duct, and gallbladder are examined using a combination of endoscopy and fluoroscopy."@en ;
-            rdfs:label "Endoscopic Retrograde Cholangiopancreatography" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94309
-ncit:C94309 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C16546 ;
-            rdfs:comment "Examination of the nasal cavity using a specialized video camera (rhinoscope)."@en ;
-            rdfs:label "Rhinoscopy" .
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51692
+ncit:C51692 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C15189 ;
+            rdfs:comment "Removal of a portion of skin tissue, for microscopic examination."@en ;
+            rdfs:label "Skin Biopsy" .
 
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94309
-ncit:C94309 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C16546 ;
-            rdfs:comment "Examination of the nasal cavity using a specialized video camera (rhinoscope)."@en ;
-            rdfs:label "Rhinoscopy" .
 
-########################
-#    Obstetric Procedure
-########################
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C51748
+ncit:C51748 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C15189 ;
+            rdfs:comment "Removal of tissue from the lung, for microscopic examination."@en ;
+            rdfs:label "Lung Biopsy" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62727
+ncit:C62727 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C16185 ;
+            rdfs:comment "A procedure that uses a computer to create a picture of a tumor to help guide the radiation beam during radiation therapy. The pictures are made using CT, ultrasound, X-ray, or other imaging techniques. Image-guided radiation therapy makes radiation therapy more accurate and causes less damage to healthy tissue."@en ;
+            rdfs:label "Image Guided Radiation Therapy" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62781
+ncit:C62781 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C19337 ;
+            rdfs:comment "Diagnostic imaging that uses sound waves (ultrasound) applying the Doppler effect, with frequency-shifted ultrasound reflections produced by moving targets (usually red blood cells) in the bloodstream along the ultrasound axis in direct proportion to the velocity of movement of the targets, to determine both direction and velocity of blood flow."@en ;
+            rdfs:label "Doppler Ultrasound" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81179
+ncit:C81179 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C89340 ;
+            rdfs:comment "Description of the method by which a fetus is delivered."@en ;
+            rdfs:label "Delivery Procedure" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81248
+ncit:C81248 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C81303 ;
+            rdfs:comment "Application of forceps to the fetal head to facilitate vaginal birth."@en ;
+            rdfs:label "Forceps Delivery" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81300
+ncit:C81300 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C81303 ;
+            rdfs:comment "Application of a vacuum device to the fetal head to facilitate vaginal birth."@en ;
+            rdfs:label "Vacuum Assisted Vaginal Delivery" .
+
+
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81303
+ncit:C81303 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C81179 ;
+            rdfs:comment "Birth of the fetus through the vagina."@en ;
+            rdfs:label "Vaginal Delivery" .
+
 
 ###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C89340
 ncit:C89340 rdf:type owl:Class ;
@@ -203,108 +280,26 @@ ncit:C89340 rdf:type owl:Class ;
             rdfs:comment "Any pregnancy or childbirth related procedure associated with a mother during her reproductive years."@en ;
             rdfs:label "Obstetric Procedure" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81179
-ncit:C81179 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C89340 ;
-            rdfs:comment "Description of the method by which a fetus is delivered."@en ;
-            rdfs:label "Delivery Procedure" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C92893
-ncit:C92893 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C81179 ;
-            rdfs:comment "A type of childbirth where the baby is surgically delivered through an incision of the uterus."@en ;
-            rdfs:label "Surgical Delivery Procedure" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C46088
-ncit:C46088 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C92893 ;
-            rdfs:comment "Surgical delivery of one or more intrauterine fetuses though an abdominal incision."@en ;
-            rdfs:label "Cesarean Section" .
-
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C114141
-ncit:C114141 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C46088 ;
-            rdfs:comment "A cesarean delivery scheduled at a patient's request or provider preference without medical or obstetric indications."@en ;
-            rdfs:label "Elective Cesarean Delivery" .
-
-###     http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C92772
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C92772
 ncit:C92772 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C46088 ;
+            rdfs:subClassOf ncit:C46088 ;
             rdfs:comment "A cesarean delivery that is not scheduled, planned or anticipated and is typically undertaken with short notice."@en ;
             rdfs:label "Emergency Cesarean Delivery" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81303
-ncit:C81303 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C81179 ;
-            rdfs:comment "Birth of the fetus through the vagina."@en ;
-            rdfs:label "Vaginal Delivery" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81248
-ncit:C81248 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C81303 ;
-            rdfs:comment "Application of forceps to the fetal head to facilitate vaginal birth."@en ;
-            rdfs:label "Forceps Delivery" .
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C92893
+ncit:C92893 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C81179 ;
+            rdfs:comment "A type of childbirth where the baby is surgically delivered through an incision of the uterus."@en ;
+            rdfs:label "Surgical Delivery Procedure" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C81300
-ncit:C81300 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C81303 ;
-            rdfs:comment "Application of a vacuum device to the fetal head to facilitate vaginal birth."@en ;
-            rdfs:label "Vacuum Assisted Vaginal Delivery" .
 
-#######################
-#    Surgical Procedure
-#######################
+###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C94309
+ncit:C94309 rdf:type owl:Class ;
+            rdfs:subClassOf ncit:C16546 ;
+            rdfs:comment "Examination of the nasal cavity using a specialized video camera (rhinoscope)."@en ;
+            rdfs:label "Rhinoscopy" .
 
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15329
-ncit:C15329 rdf:type owl:Class ;
-            rdfs:subClassOf prms:SimulatorDetectorStem ;
-            rdfs:comment "A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery."@en ;
-            rdfs:label "Surgical Procedure" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C49163
-ncit:C49163 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15329 ;
-            rdfs:comment ""@en ;
-            rdfs:label "Surgical Procedure by Site or System" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16120
-ncit:C16120 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C49163 ;
-            rdfs:comment "Surgery performed on any part of the abdominal region of the body."@en ;
-            rdfs:label "Abdominal Surgical Procedure" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16186
-ncit:C16186 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C49163 ;
-            rdfs:comment "A surgical procedure to treat and correct deformities, diseases, and injuries to the skeletal system, its articulations, and associated structures."@en ;
-            rdfs:label "Orthopedic Surgical Procedure" .
-
-##########################
-#    Therapeutic Procedure
-##########################
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C15329
-ncit:C15329 rdf:type owl:Class ;
-            rdfs:subClassOf prms:SimulatorDetectorStem ;
-            rdfs:comment "A diagnostic or treatment procedure performed by manual and/or instrumental means, often involving an incision and the removal or replacement of a diseased organ or tissue; of or relating to or involving or used in surgery or requiring or amenable to treatment by surgery."@en ;
-            rdfs:label "Therapeutic Procedure" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C16185
-ncit:C16185 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15329 ;
-            rdfs:comment "The use of imaging techniques to provide the basis for therapy, e.g., enabling surgeons to visualize internal structures through an automated overlay of 3D reconstructions of internal anatomy on top of live video views of a patient. Also used for guidance of biopsy needles."@en ;
-            rdfs:label "Image-Guided Therapy" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C62727
-ncit:C62727 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C16185 ;
-            rdfs:comment "A procedure that uses a computer to create a picture of a tumor to help guide the radiation beam during radiation therapy. The pictures are made using CT, ultrasound, X-ray, or other imaging techniques. Image-guided radiation therapy makes radiation therapy more accurate and causes less damage to healthy tissue."@en ;
-            rdfs:label "Image Guided Radiation Therapy" .
-
-###  http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C158070
-ncit:C158070 rdf:type owl:Class ;
-            rdfs:subClassOf prms:C15329 ;
-            rdfs:comment "The use of muscle relaxants to induce muscle paralysis."@en ;
-            rdfs:label "Neuromuscular Blockade" .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
